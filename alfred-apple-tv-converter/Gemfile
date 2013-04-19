@@ -1,0 +1,7 @@
+source "https://rubygems.org"
+
+gem "plist"
+gem "logging"
+gem "alfred-workflow", ">= 1.1.1"
+gem 'apple-tv-converter', '0.3.2'
+gem 'awesome_print'

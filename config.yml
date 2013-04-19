@@ -1,0 +1,7 @@
+# bundle_id = "domain.id"
+# path is the relative path to the workflow in the project root
+---
+path: alfred-apple-tv-converter
+domain: me.gokuu
+id: alfred-apple-tv-converter
+
