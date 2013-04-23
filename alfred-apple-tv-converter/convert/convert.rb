@@ -16,6 +16,7 @@ begin
         ffmpeg_location = `which ffmpeg`.strip
 
         FFMPEG.ffmpeg_binary = ffmpeg_location.empty? ? "/usr/local/bin/ffmpeg" : ffmpeg_location
+
         AppleTvConverter::CommandLine.new *ARGV
 
         "Conversion complete!"
@@ -26,6 +27,8 @@ begin
 
     status = { :in_progress => true }
     write_status status
+
+    # File.open(File.join(cache_dir, 'debug.txt'), 'w') { |f| f.write 'x' }
 
     message = with_captured_output(process) do |data|
       status = read_status
@@ -45,8 +48,10 @@ begin
           status[:progress] = $1
           status[:elapsed] = $2
         else
-          # File.open('./redirected', 'a+') { |f| f.write "-#{data.gsub(/\r|\n/, ' ')}-\n"}
+          # File.open('./debug.txt', 'a+') { |f| f.write "-#{data.gsub(/\r|\n/, ' ')}-\n"}
         end
+
+        # File.open(File.join(cache_dir, 'debug.txt'), 'a+') { |f| f.write "-#{data.gsub(/\r|\n/, ' ')}-\n"}
 
         write_status status
       end
@@ -60,7 +65,7 @@ begin
 rescue Interrupt
   puts "Conversion process canceled"
 rescue => e
-  puts e.message
+  puts e.message + "\n" + e.backtrace.join("\n")
 ensure
   cleanup
 end
