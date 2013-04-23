@@ -1,6 +1,6 @@
 # alfred-apple-tv-converter ([download](http://pedro.bbde.org/files/apple-tv-converter.alfredworkflow))
 
-Alfred workflow to control the [apple-tv-converter](https://github.com/gokuu/apple-tv-converter) gem. Currently using [apple-tv-converter](https://github.com/gokuu/apple-tv-converter) v0.3.2.
+Alfred workflow to control the [apple-tv-converter](https://github.com/gokuu/apple-tv-converter) gem. Currently using [apple-tv-converter](https://github.com/gokuu/apple-tv-converter) v0.3.3.
 
 ## Main features
 
