@@ -77,7 +77,7 @@ end
 
 def cleanup
   Dir[File.join(cache_dir, '*ffmpeg*')].each { |f| File.delete(f) }
-  File.delete File.join(cache_dir, 'status.yml')
+  File.delete File.join(cache_dir, 'status.yml') if File.exists?(File.join(cache_dir, 'status.yml'))
 end
 
 def cache_dir
