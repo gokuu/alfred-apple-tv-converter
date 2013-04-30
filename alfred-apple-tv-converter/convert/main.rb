@@ -41,23 +41,23 @@ Alfred.with_friendly_error do |alfred|
 
   if number_of_files + number_of_dirs > 0
     fb.add_item({
-      :uid      => "",
-      :title    => title,
-      :subtitle => "Simple conversion",
+      :uid      => "-1",
+      :title    => "Convert",
+      :subtitle => title,
       :arg      => arguments_command_line.join(' '),
       :valid    => "yes",
     })
 
     fb.add_item({
-      :uid      => "",
-      :title    => title,
-      :subtitle => "Convert and get metadata from IMDB",
+      :uid      => "-2",
+      :title    => "Convert and get metadata from IMDB",
+      :subtitle => title,
       :arg      => (arguments_command_line + ['--imdb']).join(' '),
       :valid    => "yes",
     })
   else
     fb.add_item({
-      :uid      => "",
+      :uid      => "1",
       :title    => "Please choose some files/directories on Finder",
       :subtitle => "You can also use Path Finder",
       :arg      => '',

@@ -106,33 +106,6 @@ puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb {query} 2&gt;&amp
 			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
-				<key>escaping</key>
-				<integer>32</integer>
-				<key>keyword</key>
-				<string>atc</string>
-				<key>runningsubtext</key>
-				<string>Checking selected files...</string>
-				<key>script</key>
-				<string>ruby ./convert/main.rb `osascript ./get_selected_file.scpt 2&gt;&amp;1`</string>
-				<key>subtext</key>
-				<string>Convert movies to Apple TV format</string>
-				<key>title</key>
-				<string>Convert movies</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>F7A9C2E1-30D7-495A-B910-48FC39B27796</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
 				<key>keyword</key>
 				<string>atc cancel</string>
 				<key>subtext</key>
@@ -231,6 +204,33 @@ puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb 2&gt;&amp;1`</str
 			<key>uid</key>
 			<string>5B12AC9D-BE86-415B-ACD1-09EF26B8BA6F</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>32</integer>
+				<key>keyword</key>
+				<string>atc</string>
+				<key>runningsubtext</key>
+				<string>Checking selected files...</string>
+				<key>script</key>
+				<string>ruby ./convert/main.rb `osascript ./get_selected_file.scpt 2&gt;&amp;1`</string>
+				<key>subtext</key>
+				<string>Convert movies to Apple TV format</string>
+				<key>title</key>
+				<string>Convert movies</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>F7A9C2E1-30D7-495A-B910-48FC39B27796</string>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -274,7 +274,7 @@ puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb 2&gt;&amp;1`</str
 		<key>F7A9C2E1-30D7-495A-B910-48FC39B27796</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>360</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
