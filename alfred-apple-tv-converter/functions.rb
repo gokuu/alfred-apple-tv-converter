@@ -31,7 +31,6 @@ end
 def check_prerequisites
   raise 'FFMPEG not found. Please install it.' unless !(`which ffmpeg` || '').empty? || File.exists?("/usr/local/bin/ffmpeg")
   raise 'RVM not found. Please install it.' unless !(`which rvm` || '').empty? || (File.exists?("/usr/local/rvm") || File.exists?(File.expand_path('~/.rvm')))
-  raise 'apple-tv-converter not found. Please install it.' unless !(`which apple-tv-converter` || '').empty?
 end
 
 def with_redirected_output(file_name)
