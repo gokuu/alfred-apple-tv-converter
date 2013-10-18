@@ -72,7 +72,7 @@ begin
 rescue Interrupt
   puts "Conversion process canceled"
 rescue => e
-  puts e.message + "\n" + e.backtrace.join("\n")
+  puts e.message # + "\n" + e.backtrace.join("\n")
 ensure
   cleanup
 end
