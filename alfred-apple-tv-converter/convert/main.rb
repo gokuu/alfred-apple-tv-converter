@@ -1,10 +1,9 @@
 # encoding: utf-8
-($LOAD_PATH << File.expand_path("..", __FILE__)).uniq!
-require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'bundle', 'bundler', 'setup'))
-require 'alfred'
-require 'shellwords'
-
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'common'))
+# require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
+# require File.expand_path(File.join(File.dirname(__FILE__), '..', 'bundle', 'bundler', 'setup'))
+# require 'alfred'
+# require 'shellwords'
 Alfred.with_friendly_error do |alfred|
   fb = alfred.feedback
 
@@ -13,15 +12,19 @@ Alfred.with_friendly_error do |alfred|
   number_of_dirs = 0
   number_of_files = 0
 
-  arguments_command_line = []
+  arguments_command_line = [
+    '--os',             # Fetch subtitles
+    '-l eng,por',       # Limit subtitles and audio streams to english and portuguese
+    '--no-interactive'  # No interaction
+  ]
 
   arguments.each do |arg|
     if File.directory?(arg)
-      arguments_command_line << %Q[-d "#{Shellwords.escape arg}"]
+      arguments_command_line << %Q[-d #{Shellwords.escape arg}]
       number_of_dirs += 1
     end
     if File.file?(arg)
-      arguments_command_line << %Q["#{Shellwords.escape arg}"]
+      arguments_command_line << %Q[#{Shellwords.escape arg}]
       number_of_files += 1
     end
   end
@@ -44,15 +47,15 @@ Alfred.with_friendly_error do |alfred|
       :uid      => "-1",
       :title    => "Convert",
       :subtitle => title,
-      :arg      => arguments_command_line.join(' '),
+      :arg      => arguments_command_line.join('$$$'),
       :valid    => "yes",
     })
 
     fb.add_item({
       :uid      => "-2",
-      :title    => "Convert and get metadata from IMDB",
+      :title    => "Convert and rename to Plex format",
       :subtitle => title,
-      :arg      => (arguments_command_line + ['--imdb']).join(' '),
+      :arg      => (arguments_command_line + ['--plex']).join('$$$'),
       :valid    => "yes",
     })
   else
@@ -66,4 +69,6 @@ Alfred.with_friendly_error do |alfred|
   end
 
   puts fb.to_xml
+  # result ="--#{ARGV}--#{arguments}--"
+  # result = arguments_command_line
 end

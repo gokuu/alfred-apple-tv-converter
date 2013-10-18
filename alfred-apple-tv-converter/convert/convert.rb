@@ -1,5 +1,7 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'common'))
 
+arguments = ARGV.join('$$$').split(/\$+/)
+
 message = ''
 status = read_status
 
@@ -15,20 +17,25 @@ begin
       begin
         ffmpeg_location = `which ffmpeg`.strip
 
+        require 'apple_tv_converter'
         FFMPEG.ffmpeg_binary = ffmpeg_location.empty? ? "/usr/local/bin/ffmpeg" : ffmpeg_location
 
-        AppleTvConverter::CommandLine.new *ARGV
+        AppleTvConverter::CommandLine.new *arguments
 
         "Conversion complete!"
-      rescue
-        "An error occured while converting"
+      rescue => e
+        [
+          "An error occured while converting",
+          e.message,
+          e.backtrace
+        ].flatten.join("\n")
       end
     end
 
     status = { :in_progress => true }
     write_status status
 
-    # File.open(File.join(cache_dir, 'debug.txt'), 'w') { |f| f.write 'x' }
+    # write_to_file 'debug.txt', 'x'
 
     message = with_captured_output(process) do |data|
       status = read_status
@@ -51,7 +58,7 @@ begin
           # File.open('./debug.txt', 'a+') { |f| f.write "-#{data.gsub(/\r|\n/, ' ')}-\n"}
         end
 
-        # File.open(File.join(cache_dir, 'debug.txt'), 'a+') { |f| f.write "-#{data.gsub(/\r|\n/, ' ')}-\n"}
+        write_to_file 'debug.txt', "-#{data.gsub(/\r|\n/, ' ')}-\n", true
 
         write_status status
       end

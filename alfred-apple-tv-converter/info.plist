@@ -87,38 +87,47 @@
 			<key>config</key>
 			<dict>
 				<key>escaping</key>
-				<integer>4</integer>
+				<integer>32</integer>
 				<key>script</key>
-				<string>SCRIPT_FILE = "./convert/convert"
-rubies = `~/.rvm/bin/rvm list`
-current_ruby = /=[\*&gt;]\s*(\S+)/.match(rubies)[1]
-puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb {query} 2&gt;&amp;1`</string>
+				<string>ruby ./runner.rb convert {query}</string>
 				<key>type</key>
-				<integer>2</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>8EFC88E1-AC56-4DB9-BA15-9BC450EFC513</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
+				<key>escaping</key>
+				<integer>0</integer>
 				<key>keyword</key>
-				<string>atc cancel</string>
+				<string>atc</string>
+				<key>runningsubtext</key>
+				<string>Checking selected files...</string>
+				<key>script</key>
+				<string>ruby ./runner.rb main "`osascript ./get_selected_file.scpt 2&gt;&amp;1`"</string>
 				<key>subtext</key>
-				<string>Apple TV Converter</string>
-				<key>text</key>
-				<string>Cancel conversion</string>
+				<string>Convert movies to Apple TV format</string>
+				<key>title</key>
+				<string>Convert movies</string>
+				<key>type</key>
+				<integer>0</integer>
 				<key>withspace</key>
 				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>1A796A0B-F56E-4B13-A331-9B90C1A4440E</string>
+			<string>F7A9C2E1-30D7-495A-B910-48FC39B27796</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -142,6 +151,29 @@ puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb {query} 2&gt;&amp
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>42D05639-3F0F-4760-8214-317167E4173D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>atc cancel</string>
+				<key>subtext</key>
+				<string>Apple TV Converter</string>
+				<key>text</key>
+				<string>Cancel conversion</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>1A796A0B-F56E-4B13-A331-9B90C1A4440E</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -149,17 +181,24 @@ puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb {query} 2&gt;&amp
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>SCRIPT_FILE = "./convert/cancel"
-rubies = `~/.rvm/bin/rvm list`
-current_ruby = /=[\*&gt;]\s*(\S+)/.match(rubies)[1]
-puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb 2&gt;&amp;1`</string>
+				<string>ruby ./runner.rb cancel</string>
 				<key>type</key>
-				<integer>2</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>9AF9BE6A-0420-4D39-A2BF-D1DB07B603EF</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>766E9947-4705-4F53-BA77-37ECDAD02CEE</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -179,12 +218,8 @@ puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb 2&gt;&amp;1`</str
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>B419B600-9466-4A54-B288-9892FE438D47</string>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.output.largetype</string>
-			<key>uid</key>
-			<string>766E9947-4705-4F53-BA77-37ECDAD02CEE</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -192,44 +227,16 @@ puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb 2&gt;&amp;1`</str
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>SCRIPT_FILE = "./convert/status"
-rubies = `~/.rvm/bin/rvm list`
-current_ruby = /=[\*&gt;]\s*(\S+)/.match(rubies)[1]
-puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb 2&gt;&amp;1`</string>
+				<string>ruby ./runner.rb status</string>
 				<key>type</key>
-				<integer>2</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>5B12AC9D-BE86-415B-ACD1-09EF26B8BA6F</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>32</integer>
-				<key>keyword</key>
-				<string>atc</string>
-				<key>runningsubtext</key>
-				<string>Checking selected files...</string>
-				<key>script</key>
-				<string>ruby ./convert/main.rb `osascript ./get_selected_file.scpt 2&gt;&amp;1`</string>
-				<key>subtext</key>
-				<string>Convert movies to Apple TV format</string>
-				<key>title</key>
-				<string>Convert movies</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>F7A9C2E1-30D7-495A-B910-48FC39B27796</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -244,7 +251,7 @@ puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb 2&gt;&amp;1`</str
 		<key>42D05639-3F0F-4760-8214-317167E4173D</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>70</real>
 		</dict>
 		<key>5B12AC9D-BE86-415B-ACD1-09EF26B8BA6F</key>
 		<dict>
@@ -274,7 +281,7 @@ puts `~/.rvm/rubies/#{current_ruby}/bin/ruby #{SCRIPT_FILE}.rb 2&gt;&amp;1`</str
 		<key>F7A9C2E1-30D7-495A-B910-48FC39B27796</key>
 		<dict>
 			<key>ypos</key>
-			<real>360</real>
+			<real>10</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
