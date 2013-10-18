@@ -1,6 +1,6 @@
 # encoding: utf-8
 def version_to_number(version) ; return version.split('.').map { |i| i.rjust(3, '0') }.join.to_i ; end
-def load_and_install_local_gem(gem_name) ; load_gem gem_name, Dir[File.join(File.dirname(__FILE__), '.gem-cache', "#{gem_name}*.gem")].first, false ; end
+def load_and_install_local_gem(gem_name) ; load_gem gem_name, Dir[File.join(File.dirname(__FILE__), 'gem-cache', "#{gem_name}*.gem")].first, false ; end
 def load_and_install_remote_gem(gem_name) ; load_gem gem_name, gem_name, true ; end
 def load_gem(gem_name, gem_to_install, remote)
   begin
