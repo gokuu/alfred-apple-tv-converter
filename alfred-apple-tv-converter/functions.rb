@@ -27,12 +27,31 @@ def load_gem(gem_name, gem_to_install, remote)
     write_status({ :installing => false }) if remote
   end
 end
+def update_remote_gem(gem_name)
+  begin
+    with_redirected_output('update_gem.txt') do
+      Gem::GemRunner.new.run ['update', gem_name, '--no-ri', '--no-rdoc']
+    end
+
+    output = get_redirected_output('update_gem.txt')
+
+    if output =~ /successfully installed #{gem_name}-(\d+(?:\.\d+)*)/im
+      return $1
+    else
+      return false
+    end
+  ensure
+    delete_redirected_output('update_gem.txt')
+  end
+end
 
 def check_prerequisites
   raise 'FFMPEG not found. Please install it.' unless !(`which ffmpeg` || '').empty? || File.exists?("/usr/local/bin/ffmpeg")
   raise 'RVM not found. Please install it.' unless !(`which rvm` || '').empty? || (File.exists?("/usr/local/rvm") || File.exists?(File.expand_path('~/.rvm')))
 end
 
+def delete_redirected_output(file_name) ; File.unlink(File.join(cache_dir, file_name)) if File.exists?(File.join(cache_dir, file_name)) ; end
+def get_redirected_output(file_name) ; File.read(File.join(cache_dir, file_name)) ; end
 def with_redirected_output(file_name)
   redirect_output(File.open(File.join(cache_dir, file_name), 'w+')) { yield if block_given? }
 end

@@ -17,11 +17,33 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>52066F8A-1F2C-4A3F-82B8-C2D8A191D479</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>88DF8E1C-191B-4BD8-BE12-49CA761E2BA9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>5B12AC9D-BE86-415B-ACD1-09EF26B8BA6F</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>766E9947-4705-4F53-BA77-37ECDAD02CEE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>88DF8E1C-191B-4BD8-BE12-49CA761E2BA9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>42D05639-3F0F-4760-8214-317167E4173D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -193,10 +215,65 @@
 			<integer>0</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>ruby ./runner.rb update</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>88DF8E1C-191B-4BD8-BE12-49CA761E2BA9</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>atc update</string>
+				<key>subtext</key>
+				<string>Updates underlying conversion software</string>
+				<key>text</key>
+				<string>Update Apple TV Converter</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>52066F8A-1F2C-4A3F-82B8-C2D8A191D479</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
 			<key>type</key>
 			<string>alfred.workflow.output.largetype</string>
 			<key>uid</key>
 			<string>766E9947-4705-4F53-BA77-37ECDAD02CEE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>ruby ./runner.rb status</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>5B12AC9D-BE86-415B-ACD1-09EF26B8BA6F</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -221,23 +298,6 @@
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>ruby ./runner.rb status</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>5B12AC9D-BE86-415B-ACD1-09EF26B8BA6F</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -246,22 +306,32 @@
 		<key>1A796A0B-F56E-4B13-A331-9B90C1A4440E</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>140</real>
 		</dict>
 		<key>42D05639-3F0F-4760-8214-317167E4173D</key>
 		<dict>
 			<key>ypos</key>
-			<real>70</real>
+			<real>140</real>
+		</dict>
+		<key>52066F8A-1F2C-4A3F-82B8-C2D8A191D479</key>
+		<dict>
+			<key>ypos</key>
+			<real>270</real>
 		</dict>
 		<key>5B12AC9D-BE86-415B-ACD1-09EF26B8BA6F</key>
 		<dict>
 			<key>ypos</key>
-			<real>250</real>
+			<real>410</real>
 		</dict>
 		<key>766E9947-4705-4F53-BA77-37ECDAD02CEE</key>
 		<dict>
 			<key>ypos</key>
-			<real>250</real>
+			<real>410</real>
+		</dict>
+		<key>88DF8E1C-191B-4BD8-BE12-49CA761E2BA9</key>
+		<dict>
+			<key>ypos</key>
+			<real>270</real>
 		</dict>
 		<key>8EFC88E1-AC56-4DB9-BA15-9BC450EFC513</key>
 		<dict>
@@ -271,12 +341,12 @@
 		<key>9AF9BE6A-0420-4D39-A2BF-D1DB07B603EF</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>140</real>
 		</dict>
 		<key>B419B600-9466-4A54-B288-9892FE438D47</key>
 		<dict>
 			<key>ypos</key>
-			<real>250</real>
+			<real>410</real>
 		</dict>
 		<key>F7A9C2E1-30D7-495A-B910-48FC39B27796</key>
 		<dict>
