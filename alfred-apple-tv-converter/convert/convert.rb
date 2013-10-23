@@ -1,6 +1,7 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'common'))
 
-arguments = ARGV.join('$$$').split(/\$+/)
+# Convert any non switch argument (i.e., not starting with a -) to the shell unescaped equivalent
+arguments = @command_line_arguments.split(/\~+/).map { |arg| arg =~ /^-/ ? arg : Shellwords.shellsplit(arg).join(' ') }
 
 message = ''
 status = read_status
@@ -58,7 +59,7 @@ begin
           # File.open('./debug.txt', 'a+') { |f| f.write "-#{data.gsub(/\r|\n/, ' ')}-\n"}
         end
 
-        write_to_file 'debug.txt', "-#{data.gsub(/\r|\n/, ' ')}-\n", true
+        # write_to_file 'debug.txt', "-#{data.gsub(/\r|\n/, ' ')}-\n", true
 
         write_status status
       end

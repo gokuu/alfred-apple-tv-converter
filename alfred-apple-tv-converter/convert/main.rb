@@ -1,20 +1,16 @@
 # encoding: utf-8
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'common'))
-# require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
-# require File.expand_path(File.join(File.dirname(__FILE__), '..', 'bundle', 'bundler', 'setup'))
-# require 'alfred'
-# require 'shellwords'
+
 Alfred.with_friendly_error do |alfred|
   fb = alfred.feedback
 
-  arguments = ARGV.join(' ').strip.split(/\$+/).map { |a| a.strip.length == 0 ? nil : a.strip }.compact
-
+  arguments = @command_line_arguments.split(/\\?\$+/).map { |a| a.strip.length == 0 ? nil : a.strip }.compact
   number_of_dirs = 0
   number_of_files = 0
 
   arguments_command_line = [
     '--os',             # Fetch subtitles
-    '-l eng,por',       # Limit subtitles and audio streams to english and portuguese
+    '-leng,por',       # Limit subtitles and audio streams to english and portuguese
     '--no-interactive'  # No interaction
   ]
 
@@ -47,7 +43,7 @@ Alfred.with_friendly_error do |alfred|
       :uid      => "-1",
       :title    => "Convert",
       :subtitle => title,
-      :arg      => arguments_command_line.join('$$$'),
+      :arg      => arguments_command_line.join('~~~'),
       :valid    => "yes",
     })
 
@@ -55,7 +51,7 @@ Alfred.with_friendly_error do |alfred|
       :uid      => "-2",
       :title    => "Convert and rename to Plex format",
       :subtitle => title,
-      :arg      => (arguments_command_line + ['--plex']).join('$$$'),
+      :arg      => (arguments_command_line + ['--plex']).join('~~~'),
       :valid    => "yes",
     })
   else

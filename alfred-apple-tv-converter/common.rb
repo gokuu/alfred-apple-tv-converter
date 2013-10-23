@@ -18,3 +18,8 @@ unless @skip_load_apple_tv_converter
   # Load (and install if needed) the Apple TV Converter gem
   load_and_install_remote_gem 'apple-tv-converter'
 end
+
+# Hack to convert to an expected string
+@command_line_arguments = Shellwords.shellsplit(ARGV.join)
+# Hack to remove the initial "[$$$" or "[~~~" and the final "]" to work around Mavericks quirks
+@command_line_arguments = @command_line_arguments.join(' ').gsub(/^\[(\\?(?:\$|\~))*/, '').gsub(/\]$/, '').strip.gsub(/\n/, '')

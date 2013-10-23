@@ -109,9 +109,9 @@
 			<key>config</key>
 			<dict>
 				<key>escaping</key>
-				<integer>32</integer>
+				<integer>0</integer>
 				<key>script</key>
-				<string>ruby ./runner.rb convert {query}</string>
+				<string>ruby ./runner.rb convert "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
